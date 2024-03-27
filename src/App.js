@@ -7,7 +7,7 @@ import About from "./pages/About";
 import Resume from "./pages/Resume";
 import Portfolio from "./pages/Portfolio";
 import VideoDetail from "./pages/VideoDetailPage";
-//import TrackDetail from "./pages/TrackDetailPage";
+import AlbumDetail from "./pages/AlbumDetailPage";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/resume" element={<Resume />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/video/:videoId" element={<VideoDetail />} />
-        {/* <Route path="/track/:trackId" element={<TrackDetail />} /> */}
+        <Route path="/album/:artistName/:albumName" element={<AlbumDetail />} />
       </Routes>
       <Footer />
     </Router>
