@@ -4,8 +4,7 @@ import styled from "styled-components";
 import { youtubeSearch } from "../services/youtubeAPI";
 import { fetchTravisScottData } from "../services/lastfmAPI";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import SearchComponent from "../components/Search";
 
 const PortfolioContainer = styled.div`
   padding: 20px;
@@ -17,48 +16,10 @@ const SectionTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
-const SearchForm = styled.form`
-  display: flex;
-  justify-content: center; // Center the form items
-  align-items: center; // Align items vertically
-  margin-bottom: 20px;
-`;
-
-const SearchInputGroup = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  flex-grow: 1;
-  max-width: 500px;
-`;
-
-const StyledInput = styled.input`
-  border: none;
-  outline: none;
-  padding: 10px;
-  width: 100%;
-`;
-
-const SearchButton = styled.button`
-  padding: 15px 20px;
-  border-radius: 5px;
-  border: none;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #555;
-  }
-`;
-
 const ItemList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; // アイテムを中央に寄せる
+  justify-content: center;
   gap: 20px;
 `;
 
@@ -88,7 +49,8 @@ const ItemImage = styled.img`
 `;
 
 const ItemTitle = styled.h3`
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const Portfolio = () => {
@@ -112,6 +74,7 @@ const Portfolio = () => {
         lastFmResults.slice(0, 4).map((album) => {
           const imageUrl = album.images.extralarge || album.images.large || album.images.medium || album.images.small;
           return {
+            artist: album.artist.name,
             title: album.name,
             thumbnailUrl: imageUrl,
             mbid: album.mbid,
@@ -127,40 +90,29 @@ const Portfolio = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
+
     try {
       const youtubeResults = await youtubeSearch(searchQuery);
       const lastFmResults = await fetchTravisScottData(searchQuery);
-      setVideos(youtubeResults);
-      setAlbums(
-        lastFmResults.slice(0, 4).map((album) => {
-          const imageUrl = album.images.extralarge || album.images.large || album.images.medium || album.images.small;
-          return {
-            title: album.name,
-            thumbnailUrl: imageUrl,
-            mbid: album.mbid,
-          };
-        })
-      );
+
+      console.log("Search query:", searchQuery);
+      console.log("Fetched albums:", lastFmResults);
+      const filteredYoutubeResults = youtubeResults.filter((video) => video.title.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      setVideos(filteredYoutubeResults);
+      setAlbums(lastFmResults);
     } catch (error) {
       console.error("Failed to fetch data", error);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
   return (
     <PortfolioContainer>
       <h1>Travis Scott's Portfolio</h1>
-      <SearchForm onSubmit={handleSearch}>
-        <SearchInputGroup>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <StyledInput type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for videos or music..." />
-        </SearchInputGroup>
-        <SearchButton type="submit">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </SearchButton>
-      </SearchForm>
+      <SearchComponent searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} />
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -178,7 +130,7 @@ const Portfolio = () => {
           <SectionTitle>Albums</SectionTitle>
           <ItemList>
             {albums.map((album, index) => (
-              <ItemLink key={index} to={`/album/${album.mbid}`}>
+              <ItemLink key={index} to={`/album/${encodeURIComponent("Travis Scott")}/${encodeURIComponent(album.title)}`}>
                 <ItemContent>
                   <ItemImage src={album.thumbnailUrl} alt={album.title} />
                   <ItemTitle>{album.title}</ItemTitle>

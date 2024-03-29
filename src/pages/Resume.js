@@ -2,29 +2,53 @@ import React from "react";
 import styled from "styled-components";
 
 const ResumeContainer = styled.div`
+  max-width: 800px;
+  margin: auto;
   padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 `;
 
 const Section = styled.section`
   margin-bottom: 40px;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 20px;
+  &:last-child {
+    border: none;
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
+  color: #495057;
+  font-weight: 600;
 `;
 
 const SectionContent = styled.p`
   font-size: 16px;
+  color: #495057;
+  line-height: 1.5;
 `;
 
 const List = styled.ul`
-  list-style-type: circle;
-  margin-left: 20px;
+  list-style-type: none;
+  padding-left: 0;
 `;
 
 const ListItem = styled.li`
   font-size: 16px;
+  color: #495057;
+  &:before {
+    content: "•";
+    color: #007bff; // Adjust the bullet point color
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
 `;
 
 const Resume = () => {

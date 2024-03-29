@@ -1,17 +1,16 @@
 import axios from "axios";
 
-export const fetchTravisScottData = async () => {
+export const fetchTravisScottData = async (searchQuery = "") => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
   const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=10`;
 
   try {
     const response = await axios.get(url);
-    console.log("LastFM API Response:", response);
-    console.log("LastFM API Data:", response.data);
-    const albums = response.data.topalbums.album
-      .filter((album) => album.name && album.name !== "(null)") // Add this line
+    let albums = response.data.topalbums.album
+      .filter((album) => album.name && album.name !== "(null)")
       .map((album) => ({
+        artist: artistName,
         name: album.name,
         playcount: album.playcount,
         mbid: album.mbid,
@@ -21,6 +20,11 @@ export const fetchTravisScottData = async () => {
           return acc;
         }, {}),
       }));
+
+    if (searchQuery) {
+      albums = albums.filter((album) => album.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+
     return albums;
   } catch (error) {
     console.error("Error fetching Travis Scott albums from LastFM:", error);

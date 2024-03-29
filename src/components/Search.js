@@ -1,26 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Search = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
-  const [type, setType] = useState("videos");
+const SearchForm = styled.form`
+  display: flex;
+  justify-content: center; // Center the form items
+  align-items: center; // Align items vertically
+  margin-bottom: 20px;
+`;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch(query, type);
-  };
+const SearchInputGroup = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  flex-grow: 1;
+  max-width: 500px;
+`;
 
+const StyledInput = styled.input`
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+`;
+
+const SearchButton = styled.button`
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+const SearchComponent = ({ searchQuery, setSearchQuery, handleSearch }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search for Travis Scott's music or videos" />
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="videos">Videos</option>
-          <option value="music">Music</option>
-        </select>
-        <button type="submit">Search</button>
-      </div>
-    </form>
+    <SearchForm onSubmit={handleSearch}>
+      <SearchInputGroup>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <StyledInput type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for videos or music..." />
+      </SearchInputGroup>
+      <SearchButton type="submit">
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+      </SearchButton>
+    </SearchForm>
   );
 };
 
-export default Search;
+export default SearchComponent;

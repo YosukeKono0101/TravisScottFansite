@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { youtubeSearch } from "../services/youtubeAPI";
-import LoadingSpinner from "../components/LoadingSpinner"; // Assuming you have this component
+import LoadingSpinner from "../components/LoadingSpinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const DetailContainer = styled.div`
   max-width: 800px;
@@ -10,23 +12,25 @@ const DetailContainer = styled.div`
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  background-color: #f9f9f9;
 `;
 
 const VideoTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 20px;
+  color: #333;
 `;
 
 const VideoDescription = styled.p`
   font-size: 16px;
   color: #666;
   line-height: 1.6;
+  margin-bottom: 20px;
 `;
 
 const IframeContainer = styled.div`
   overflow: hidden;
-  /* 16:9 aspect ratio */
-  padding-top: 56.25%;
+  padding-top: 56.25%; // 16:9 aspect ratio
   position: relative;
 `;
 
@@ -39,8 +43,24 @@ const Iframe = styled.iframe`
   width: 100%;
 `;
 
+const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  &:hover {
+    background: #555;
+  }
+`;
+
 const VideoDetail = () => {
   const { videoId } = useParams();
+  const navigate = useNavigate();
   const [videoDetails, setVideoDetails] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -58,6 +78,10 @@ const VideoDetail = () => {
 
   return (
     <DetailContainer>
+      <BackButton onClick={() => navigate(-1)}>
+        <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: "10px" }} />
+        Back
+      </BackButton>
       {videoDetails ? (
         <>
           <VideoTitle>{videoDetails.title}</VideoTitle>
