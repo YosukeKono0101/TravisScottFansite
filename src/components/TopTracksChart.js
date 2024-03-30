@@ -4,16 +4,16 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const TopTracksChart = ({ tracks = [] }) => {
+const TopTracksChart = ({ tracks }) => {
   const chartData = {
     labels: tracks.map((track) => track.title),
     datasets: [
       {
         label: "Play Count",
         data: tracks.map((track) => track.playcount),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1,
+        backgroundColor: "rgba(53, 162, 235, 0.7)",
+        borderColor: "rgba(255, 255, 255, 1)",
+        borderWidth: 2,
       },
     ],
   };
@@ -21,19 +21,14 @@ const TopTracksChart = ({ tracks = [] }) => {
   const chartOptions = {
     responsive: true,
     plugins: {
-      legend: { position: "top" },
-      title: { display: true, text: "Top Tracks Played" },
+      legend: { position: "top", labels: { color: "white" } },
     },
-
-    hover: {
-      mode: "index",
-      intersect: false,
-    },
-    tooltips: {
-      mode: "index",
-      intersect: false,
+    scales: {
+      x: { ticks: { color: "white" } },
+      y: { ticks: { color: "white" }, beginAtZero: true },
     },
   };
+
   return <Bar data={chartData} options={chartOptions} />;
 };
 
