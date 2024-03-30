@@ -6,15 +6,16 @@ import { faXTwitter, faYoutube, faSpotify, faInstagram, faFacebookF } from "@for
 const SocialMediaWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 const IconLink = styled.a`
   color: white;
-  margin-left: 20px; // Space out icons
-  font-size: 24px; // Adjust icon size as needed
+  margin-left: 20px;
+  font-size: 24px;
 
   &:hover {
-    color: #ccc; // Adjust hover color as needed
+    color: #ccc;
   }
 `;
 
