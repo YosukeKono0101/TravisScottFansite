@@ -1,12 +1,14 @@
 import React from "react";
 import HeroSection from "../components/HeroSection";
-import UpcomingConcerts from "../components/UpcomingConcerts";
+import TopTracks from "../components/TopTracks";
+import UpcomingTours from "../components/UpcomingTours";
 
 const Home = () => {
   return (
     <div>
       <HeroSection />
-      <UpcomingConcerts />
+      <TopTracks />
+      <UpcomingTours />
     </div>
   );
 };
