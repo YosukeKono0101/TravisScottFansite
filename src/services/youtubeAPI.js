@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const youtubeSearch = async (query) => {
+export const youtubeSearch = async (query, channelId = "", videoId = "") => {
+  const params = videoId ? { id: videoId } : { query: query, channelId: channelId };
   const options = {
     method: "GET",
     url: "https://youtube-search-and-download.p.rapidapi.com/search",
-    params: { query: query },
+    params: params,
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
       "X-RapidAPI-Host": "youtube-search-and-download.p.rapidapi.com",
@@ -25,7 +26,7 @@ export const youtubeSearch = async (query) => {
         publishedAt: video.publishedTimeText,
       }));
 
-    return videos;
+    return videos.filter((video) => video.channelId === channelId);
   } catch (error) {
     console.error("Error fetching YouTube search results:", error);
     return [];
