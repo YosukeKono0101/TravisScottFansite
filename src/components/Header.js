@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter, faYoutube, faSpotify, faInstagram, faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
+// Styled component for the header container with responsive design adjustments.
 const HeaderContainer = styled.header`
   background-color: black;
   color: white;
@@ -30,10 +31,10 @@ const Logo = styled.img`
 
   @media (max-width: 768px) {
     order: 1;
-    margin-bottom: 10px;
   }
 `;
 
+// Responsive social media wrapper component.
 const SocialMediaWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -55,6 +56,7 @@ const SocialMediaWrapper = styled.div`
   }
 `;
 
+// Styling for each social media icon link.
 const IconLink = styled.a`
   color: white;
   margin-left: 20px;
@@ -65,6 +67,7 @@ const IconLink = styled.a`
   }
 `;
 
+// Hamburger icon for mobile menu, shown only on small screens.
 const HamburgerIcon = styled.div`
   display: none;
   @media (max-width: 768px) {
@@ -72,15 +75,16 @@ const HamburgerIcon = styled.div`
     cursor: pointer;
     position: absolute;
     right: 20px;
-    top: 21px;
+    top: 26px;
     font-size: 17px;
   }
 `;
 
+// Navigation component with responsive design for displaying menu items.
 const Navigation = styled.nav`
   display: flex;
-
   @media (max-width: 768px) {
+    flex-direction: column;
     display: ${({ $isMenuOpen }) => ($isMenuOpen ? "flex" : "none")};
     order: 3;
     width: 100%;
@@ -95,13 +99,26 @@ const Navigation = styled.nav`
     margin: 0;
     padding: 0;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     li {
       margin-right: 20px;
+
+      @media (max-width: 768px) {
+        margin-right: 0;
+        margin-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
       a {
         color: white;
         text-decoration: none;
         font-weight: bold;
         transition: color 0.3s ease-in-out;
+
         &:hover {
           color: #ccc;
         }
@@ -110,8 +127,9 @@ const Navigation = styled.nav`
   }
 `;
 
+// Header functional component with state for toggling mobile menu.
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control the mobile menu visibility.
 
   return (
     <HeaderContainer>
@@ -120,6 +138,7 @@ const Header = () => {
       </HamburgerIcon>
       <Navigation $isMenuOpen={isMenuOpen}>
         <ul>
+          {/* Navigation links that hide the menu on click in mobile view */}
           <li>
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
               Home

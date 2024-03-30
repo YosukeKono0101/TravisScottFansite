@@ -2,29 +2,34 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 
+// Register the necessary plugins for Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+// Functional component for the albums chart
 const AlbumsChart = ({ albums }) => {
-  const backgroundColors = ["rgba(53, 162, 235, 0.7)", "rgba(255, 205, 86, 0.7)", "rgba(75, 192, 192, 0.7)", "rgba(255, 99, 132, 0.7)", "rgba(153, 102, 255, 0.7)", "rgba(255, 159, 64, 0.7)"];
-
+  // Data for the albums chart
   const data = {
     labels: albums.map((album) => album.name),
+    // Datasets for the albums chart
     datasets: [
       {
         label: "Play Count",
         data: albums.map((album) => album.playcount),
-        backgroundColor: backgroundColors,
+        backgroundColor: "rgba(255, 99, 132, 0.7)",
         borderColor: "rgba(255,255,255,1)",
         borderWidth: 2,
       },
     ],
   };
 
+  // Options for the albums chart
   const options = {
     responsive: true,
+    // Maintain the aspect ratio of the chart
     plugins: {
       legend: { position: "top", labels: { color: "white" } },
     },
+    // Customize the chart scales
     scales: {
       x: { ticks: { color: "white" } },
       y: { ticks: { color: "white" }, beginAtZero: true },

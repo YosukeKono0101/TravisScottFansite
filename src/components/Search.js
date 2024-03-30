@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+// Styled form for the search input and button
 const SearchForm = styled.form`
   display: flex;
   justify-content: center;
@@ -10,6 +11,7 @@ const SearchForm = styled.form`
   margin-bottom: 20px;
 `;
 
+// Styled div for the search input group with responsive design
 const SearchInputGroup = styled.div`
   display: flex;
   align-items: center;
@@ -21,6 +23,7 @@ const SearchInputGroup = styled.div`
   max-width: 500px;
 `;
 
+// Styled input for the search input with responsive design
 const StyledInput = styled.input`
   border: none;
   outline: none;
@@ -28,6 +31,7 @@ const StyledInput = styled.input`
   width: 100%;
 `;
 
+// Styled button for the search button with responsive design
 const SearchButton = styled.button`
   padding: 15px 20px;
   border-radius: 5px;
@@ -41,6 +45,7 @@ const SearchButton = styled.button`
   }
 `;
 
+// Functional component for the search input and button
 const SearchComponent = ({ searchQuery, setSearchQuery, handleSearch }) => {
   return (
     <SearchForm onSubmit={handleSearch}>

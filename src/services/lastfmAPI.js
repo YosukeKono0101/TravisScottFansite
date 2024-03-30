@@ -1,12 +1,16 @@
 import axios from "axios";
 
+// Fetches the top tracks of Travis Scott from LastFM
 export const fetchTopTracks = async () => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
   const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=5`;
 
+  // Fetch the top tracks from LastFM
   try {
+    // Fetch the data from the URL
     const response = await axios.get(url);
+    // Map the response data to the required format
     const tracks = response.data.toptracks.track.map((track) => ({
       title: track.name,
       url: track.url,
@@ -16,6 +20,7 @@ export const fetchTopTracks = async () => {
         return acc;
       }, {}),
     }));
+    // Return the mapped data
     return tracks;
   } catch (error) {
     console.error("Error fetching Travis Scott top tracks from LastFM:", error);
@@ -23,11 +28,13 @@ export const fetchTopTracks = async () => {
   }
 };
 
+// Fetches the Travis Scott albums from LastFM
 export const fetchTravisScottData = async (searchQuery = "") => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
   const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=10`;
 
+  // Fetch the Travis Scott albums from LastFM
   try {
     const response = await axios.get(url);
     let albums = response.data.topalbums.album
@@ -44,10 +51,12 @@ export const fetchTravisScottData = async (searchQuery = "") => {
         }, {}),
       }));
 
+    // Filter the albums based on the search query
     if (searchQuery) {
       albums = albums.filter((album) => album.name.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
+    // Return the filtered albums
     return albums;
   } catch (error) {
     console.error("Error fetching Travis Scott albums from LastFM:", error);
@@ -55,10 +64,12 @@ export const fetchTravisScottData = async (searchQuery = "") => {
   }
 };
 
+// Fetches the album details from LastFM
 export const fetchAlbumDetails = async (artistName, albumName) => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const url = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${encodeURIComponent(artistName)}&album=${encodeURIComponent(albumName)}&format=json`;
 
+  // Fetch the album details from LastFM
   try {
     const response = await axios.get(url);
     return response.data.album;
@@ -68,13 +79,17 @@ export const fetchAlbumDetails = async (artistName, albumName) => {
   }
 };
 
+// Fetches the top albums of Travis Scott from LastFM
 export const fetchTopAlbums = async () => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
   const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=6`;
 
+  // Fetch the top albums from LastFM
   try {
+    // Fetch the data from the URL
     const response = await axios.get(url);
+    // Map the response data to the required format
     const albums = response.data.topalbums.album
       .filter((album) => album.name && album.name.toLowerCase() !== "(null)")
       .map((album) => ({

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Styled footer with black background, white text, and center alignment
 const StyledFooter = styled.footer`
   background-color: black;
   color: white;
@@ -9,6 +10,7 @@ const StyledFooter = styled.footer`
   border-top: 1px solid gray;
 `;
 
+// Styled link for the official site with white color and no text decoration
 const OfficialSiteLink = styled.a`
   color: white;
   text-decoration: none;
@@ -18,6 +20,7 @@ const OfficialSiteLink = styled.a`
   }
 `;
 
+// Functional component for the footer
 const Footer = () => {
   return (
     <StyledFooter>

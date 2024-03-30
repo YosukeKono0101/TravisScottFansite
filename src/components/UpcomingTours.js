@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchUpcomingTours } from "../services/ticketmasterAPI";
 import styled, { createGlobalStyle } from "styled-components";
 
+// Global styles for the entire page
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: black;
@@ -10,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// Styled container for the tours with responsive design
 const ToursContainer = styled.div`
   text-align: center;
   margin: 40px 20px;
@@ -21,11 +23,13 @@ const ToursContainer = styled.div`
   }
 `;
 
+// Styled ul for the tour list with no list style
 const TourList = styled.ul`
   list-style: none;
   padding: 0;
 `;
 
+// Styled li for the tour item with margin
 const TourItem = styled.li`
   margin: 20px 0;
 
@@ -34,6 +38,7 @@ const TourItem = styled.li`
   }
 `;
 
+// Styled button for the official site link with responsive design
 const OfficialSiteButton = styled.a`
   display: block;
   color: white;
@@ -55,9 +60,11 @@ const OfficialSiteButton = styled.a`
   }
 `;
 
+// Functional component for the upcoming tours section
 const UpcomingTours = () => {
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState([]); // State for the upcoming tours
 
+  // Fetch upcoming tours on page load
   useEffect(() => {
     const getTours = async () => {
       const upcomingTours = await fetchUpcomingTours();
@@ -74,6 +81,7 @@ const UpcomingTours = () => {
         <h2>Upcoming Tours</h2>
         {tours.length > 0 ? (
           <TourList>
+            {/* Map through the tours and display the name and start date */}
             {tours.map((tour) => (
               <TourItem key={tour.id}>
                 {tour.name} - {tour.dates.start.localDate}

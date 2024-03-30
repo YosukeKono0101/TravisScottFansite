@@ -2,6 +2,7 @@ import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import resumeImage from "../images/resume_image.webp";
 
+// Global styles for the entire page
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -19,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// Styled div for the resume container with various CSS properties
 const ResumeContainer = styled.div`
   max-width: 800px;
   margin: auto;
@@ -31,6 +33,7 @@ const ResumeContainer = styled.div`
     max-width: 90%;
 `;
 
+// Styled section for each section of the resume
 const Section = styled.section`
   margin-bottom: 40px;
   border-bottom: 1px solid #dee2e6;
@@ -40,6 +43,7 @@ const Section = styled.section`
   }
 `;
 
+// Styled h2 for the section title with responsive font sizes
 const SectionTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
@@ -51,6 +55,7 @@ const SectionTitle = styled.h2`
   }
 `;
 
+// Styled p for the section content with responsive font sizes
 const SectionContent = styled.p`
   font-size: 16px;
   color: white;
@@ -61,11 +66,13 @@ const SectionContent = styled.p`
   }
 `;
 
+// Styled ul for the list of items with no list-style and padding
 const List = styled.ul`
   list-style-type: none;
   padding-left: 0;
 `;
 
+// Styled li for each list item with a "-" before the content
 const ListItem = styled.li`
   font-size: 16px;
   color: white;
@@ -81,24 +88,31 @@ const ListItem = styled.li`
   }
 `;
 
+// Functional component for the Resume page
 const Resume = () => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle /> {/* Apply global styles to the entire page */}
       <ResumeContainer>
+        {" "}
+        {/* Container for the resume content */}
         <Section>
+          {" "}
+          {/* Section for the overview summary */}
           <SectionTitle>Overview Summary</SectionTitle>
           <SectionContent>Travis Scott is a world-renowned rapper, singer, and record producer. Born on April 30, 1991, he has become a pivotal figure in the modern music landscape with a distinctive style that blends hip-hop, trap, and auto-tuned vocal elements.</SectionContent>
         </Section>
-
         <Section>
+          {" "}
+          {/* Section for the career history */}
           <SectionTitle>Career History</SectionTitle>
           <SectionContent>
             Scott's career began in earnest with his debut mixtape, "Owl Pharaoh," in 2013, which established him as a force in the hip-hop genre. He has since released multiple successful albums, including "Astroworld," which received widespread critical acclaim and commercial success.
           </SectionContent>
         </Section>
-
         <Section>
+          {" "}
+          {/* Section for the skills */}
           <SectionTitle>Skills</SectionTitle>
           <List>
             <ListItem>Innovative songwriting and production</ListItem>
@@ -107,8 +121,9 @@ const Resume = () => {
             <ListItem>Collaboration with artists across various genres</ListItem>
           </List>
         </Section>
-
         <Section>
+          {" "}
+          {/* Section for the publications/notable outputs */}
           <SectionTitle>Publications/Notable Outputs</SectionTitle>
           <List>
             <ListItem>Astroworld (Album, 2018)</ListItem>
@@ -116,8 +131,9 @@ const Resume = () => {
             <ListItem>"Sicko Mode" (Single, 2018) - Multi-platinum hit</ListItem>
           </List>
         </Section>
-
         <Section>
+          {" "}
+          {/* Section for the qualifications */}
           <SectionTitle>Qualifications</SectionTitle>
           <SectionContent>While Scott's education in formal institutions is less documented, his real-world experience in the music industry, combined with his innovative contributions to modern hip-hop, speak volumes of his qualifications as a leading artist.</SectionContent>
         </Section>

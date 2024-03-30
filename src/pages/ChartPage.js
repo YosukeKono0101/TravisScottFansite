@@ -4,6 +4,7 @@ import { fetchTopTracks, fetchTopAlbums } from "../services/lastfmAPI";
 import TopTracksChart from "../components/TopTracksChart";
 import AlbumsChart from "../components/AlbumsChart";
 
+// Global styles for the entire page
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -14,26 +15,32 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// Styled container for the chart with responsive design
 const ChartContainer = styled.div`
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
 `;
 
+// Styled h1 for the chart title
 const Title = styled.h1`
   text-align: center;
   color: #fff;
   margin: 40px 0;
 `;
 
+// Functional component for the Chart page
 const ChartPage = () => {
-  const [topTracks, setTopTracks] = useState([]);
-  const [topAlbums, setTopAlbums] = useState([]);
+  const [topTracks, setTopTracks] = useState([]); // State for the top tracks
+  const [topAlbums, setTopAlbums] = useState([]); // State for the top albums
 
+  // Fetch top tracks and albums on page load
   useEffect(() => {
+    // Function to fetch top tracks and albums
     const loadData = async () => {
-      const tracks = await fetchTopTracks();
-      const albums = await fetchTopAlbums();
+      const tracks = await fetchTopTracks(); // Fetch top tracks
+      const albums = await fetchTopAlbums(); // Fetch top albums
+      // Set the top tracks and albums in the state
       setTopTracks(tracks);
       setTopAlbums(albums);
     };

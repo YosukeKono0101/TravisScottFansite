@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// Fetches the YouTube search results for the given query and channelId
 export const youtubeSearch = async (query, channelId = "", videoId = "") => {
+  // Set the parameters based on the query and channelId
   const params = videoId ? { id: videoId } : { query: query, channelId: channelId };
+  // Set the options for the request
   const options = {
     method: "GET",
     url: "https://youtube-search-and-download.p.rapidapi.com/search",
@@ -12,8 +15,11 @@ export const youtubeSearch = async (query, channelId = "", videoId = "") => {
     },
   };
 
+  // Fetch the data from the API
   try {
+    // Make the request and get the response
     const response = await axios.request(options);
+    // Filter the response to get only the videos
     const videos = response.data.contents
       .filter((item) => item.hasOwnProperty("video"))
       .map(({ video }) => ({
@@ -26,6 +32,7 @@ export const youtubeSearch = async (query, channelId = "", videoId = "") => {
         publishedAt: video.publishedTimeText,
       }));
 
+    // Return the filtered videos
     return videos.filter((video) => video.channelId === channelId);
   } catch (error) {
     console.error("Error fetching YouTube search results:", error);

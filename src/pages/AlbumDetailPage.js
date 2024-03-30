@@ -6,6 +6,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+// Global styles for the entire page
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -15,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// Styled container for the album details with responsive design
 const AlbumDetailContainer = styled.div`
   max-width: 800px;
   margin: 20px auto;
@@ -34,6 +36,7 @@ const AlbumDetailContainer = styled.div`
   }
 `;
 
+// Styled div for the album header with responsive design
 const AlbumHeader = styled.div`
   display: flex;
   align-items: center;
@@ -44,6 +47,7 @@ const AlbumHeader = styled.div`
   }
 `;
 
+// Styled img for the album image with responsive design
 const AlbumImage = styled.img`
   width: 100%;
   max-width: 300px;
@@ -57,15 +61,18 @@ const AlbumImage = styled.img`
   }
 `;
 
+// Styled h1 for the album title with responsive font sizes
 const AlbumTitle = styled.h1`
   color: #fff;
 `;
 
+// Styled h2 for the album artist with responsive font sizes
 const AlbumArtist = styled.h2`
   color: #ccc;
   margin: 5px 0 20px;
 `;
 
+// Styled div for the album information with responsive design
 const AlbumInfo = styled.div`
   background: #333;
   padding: 10px;
@@ -78,10 +85,12 @@ const AlbumInfo = styled.div`
   }
 `;
 
+// Styled div for each item in the album information
 const InfoItem = styled.div`
   margin-bottom: 10px;
 `;
 
+// Styled ul for the track list with no list-style and padding
 const TrackList = styled.ul`
   list-style: none;
   padding: 0;
@@ -91,6 +100,7 @@ const TrackList = styled.ul`
   }
 `;
 
+// Styled li for each track with a background color and padding
 const Track = styled.li`
   margin-bottom: 10px;
   background: #222;
@@ -99,6 +109,7 @@ const Track = styled.li`
   color: #fff;
 `;
 
+// Styled button for the back button with responsive design
 const BackButton = styled.button`
   display: flex;
   align-items: center;
@@ -118,6 +129,7 @@ const BackButton = styled.button`
   }
 `;
 
+// Styled a for the Last.fm button with responsive design
 const LastFmButton = styled.a`
   display: inline-block;
   background-color: #e30e5c;
@@ -130,21 +142,26 @@ const LastFmButton = styled.a`
   }
 `;
 
+// Styled h2 for the track list title with responsive font sizes
 const TrackListTitle = styled.h2`
   margin-bottom: 10px;
   color: #ccc;
 `;
 
+// Page component for the album detail page
 const AlbumDetail = () => {
-  const { artistName, albumName } = useParams();
-  const navigate = useNavigate();
-  const [albumDetails, setAlbumDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { artistName, albumName } = useParams(); // Get the artist and album name from the URL
+  const navigate = useNavigate(); // Get the navigate function from the router
+  const [albumDetails, setAlbumDetails] = useState(null); // State for the album details
+  const [loading, setLoading] = useState(true); // State for loading status
 
   useEffect(() => {
+    // Fetch the album details when the component mounts
     const fetchDetails = async () => {
       try {
+        // Fetch the album details using the artist and album name
         const details = await fetchAlbumDetails(artistName, albumName);
+        // Set the album details in the state and set loading to false
         setAlbumDetails(details);
         setLoading(false);
       } catch (error) {
@@ -158,6 +175,8 @@ const AlbumDetail = () => {
     <>
       <GlobalStyle />
       <AlbumDetailContainer>
+        {" "}
+        {/* Container for the album details */}
         <BackButton onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: "10px" }} />
           Back
@@ -166,7 +185,10 @@ const AlbumDetail = () => {
           <LoadingSpinner />
         ) : albumDetails ? (
           <>
+            {" "}
+            {/* Show album details when loaded */}
             <AlbumHeader>
+              {/* Show album image, title, and artist */}
               <AlbumImage src={albumDetails.image.find((img) => img.size === "large")["#text"]} alt={albumDetails.name} />
               <div>
                 <AlbumTitle>{albumDetails.name}</AlbumTitle>
@@ -185,6 +207,7 @@ const AlbumDetail = () => {
             </AlbumInfo>
             <TrackListTitle>Track List</TrackListTitle>
             <TrackList>
+              {/* Show each track in the album */}
               {albumDetails.tracks?.track.map((track, index) => (
                 <Track key={index}>{track.name}</Track>
               ))}

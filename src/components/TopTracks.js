@@ -4,6 +4,7 @@ import { fetchTopTracks } from "../services/lastfmAPI";
 import topTrack from "../images/top_track.webp";
 import topTrack2 from "../images/top_track2.webp";
 
+// Styled container for the top tracks section
 const TopTracksContainer = styled.div`
   background-color: black;
   padding: 40px 0;
@@ -13,6 +14,7 @@ const TopTracksContainer = styled.div`
   align-items: center;
 `;
 
+// Styled div for the track card with responsive design
 const TrackCard = styled.div`
   width: 300px;
   margin: 20px;
@@ -20,6 +22,7 @@ const TrackCard = styled.div`
   color: white;
 `;
 
+// Styled img for the track image with responsive design
 const TrackImage = styled.img`
   max-width: 100%;
   height: auto;
@@ -27,6 +30,7 @@ const TrackImage = styled.img`
   transition: transform 0.3s ease;
 `;
 
+// Styled a for the listen now button with responsive design
 const ListenNowButton = styled.a`
   display: inline-block;
   color: white;
@@ -42,9 +46,11 @@ const ListenNowButton = styled.a`
   }
 `;
 
+// Functional component for the top tracks section
 const TopTracks = () => {
-  const [topTracks, setTopTracks] = useState([]);
+  const [topTracks, setTopTracks] = useState([]); // State for the top tracks
 
+  // Fetch top tracks on page load
   useEffect(() => {
     const loadTopTracks = async () => {
       const tracks = await fetchTopTracks();
