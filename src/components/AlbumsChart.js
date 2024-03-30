@@ -5,7 +5,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const AlbumsChart = ({ albums }) => {
-  const backgroundColors = ["rgba(255, 99, 132, 0.5)", "rgba(54, 162, 235, 0.5)", "rgba(255, 206, 86, 0.5)", "rgba(75, 192, 192, 0.5)", "rgba(153, 102, 255, 0.5)", "rgba(255, 159, 64, 0.5)"];
+  const backgroundColors = ["rgba(53, 162, 235, 0.7)", "rgba(255, 205, 86, 0.7)", "rgba(75, 192, 192, 0.7)", "rgba(255, 99, 132, 0.7)", "rgba(153, 102, 255, 0.7)", "rgba(255, 159, 64, 0.7)"];
 
   const data = {
     labels: albums.map((album) => album.name),
@@ -13,25 +13,21 @@ const AlbumsChart = ({ albums }) => {
       {
         label: "Play Count",
         data: albums.map((album) => album.playcount),
-        backgroundColor: albums.map((_, index) => backgroundColors[index % backgroundColors.length]),
+        backgroundColor: backgroundColors,
+        borderColor: "rgba(255,255,255,1)",
+        borderWidth: 2,
       },
     ],
   };
 
   const options = {
-    sresponsive: true,
+    responsive: true,
     plugins: {
-      legend: { position: "top" },
-      title: { display: true, text: "Top Albums Played" },
+      legend: { position: "top", labels: { color: "white" } },
     },
-    // ホバー時の設定を追加
-    hover: {
-      mode: "index",
-      intersect: false,
-    },
-    tooltips: {
-      mode: "index",
-      intersect: false,
+    scales: {
+      x: { ticks: { color: "white" } },
+      y: { ticks: { color: "white" }, beginAtZero: true },
     },
   };
 
