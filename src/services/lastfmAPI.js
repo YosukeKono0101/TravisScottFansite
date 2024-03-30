@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchTopTracks = async () => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
-  const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=15`;
+  const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=5`;
 
   try {
     const response = await axios.get(url);
@@ -71,7 +71,7 @@ export const fetchAlbumDetails = async (artistName, albumName) => {
 export const fetchTopAlbums = async () => {
   const apiKey = process.env.REACT_APP_LASTFM_API_KEY;
   const artistName = "Travis Scott";
-  const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=10`;
+  const url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${apiKey}&format=json&limit=6`;
 
   try {
     const response = await axios.get(url);
