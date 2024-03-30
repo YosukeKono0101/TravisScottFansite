@@ -5,8 +5,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchForm = styled.form`
   display: flex;
-  justify-content: center; // Center the form items
-  align-items: center; // Align items vertically
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
@@ -46,7 +46,7 @@ const SearchComponent = ({ searchQuery, setSearchQuery, handleSearch }) => {
     <SearchForm onSubmit={handleSearch}>
       <SearchInputGroup>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <StyledInput type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for videos or music..." />
+        <StyledInput type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for videos or albums..." />
       </SearchInputGroup>
       <SearchButton type="submit">
         <FontAwesomeIcon icon={faMagnifyingGlass} />
