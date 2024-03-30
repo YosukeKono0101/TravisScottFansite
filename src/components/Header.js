@@ -39,7 +39,7 @@ const SocialMediaWrapper = styled.div`
   justify-content: center;
 
   @media (max-width: 768px) {
-    display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
+    display: ${({ $isMenuOpen }) => ($isMenuOpen ? "flex" : "none")};
     order: 2;
     width: 100%;
     margin-bottom: 10px;
@@ -81,7 +81,7 @@ const Navigation = styled.nav`
   display: flex;
 
   @media (max-width: 768px) {
-    display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
+    display: ${({ $isMenuOpen }) => ($isMenuOpen ? "flex" : "none")};
     order: 3;
     width: 100%;
     justify-content: center;
@@ -118,7 +118,7 @@ const Header = () => {
       <HamburgerIcon onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <FontAwesomeIcon icon={faBars} size="2x" />
       </HamburgerIcon>
-      <Navigation isMenuOpen={isMenuOpen}>
+      <Navigation $isMenuOpen={isMenuOpen}>
         <ul>
           <li>
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
@@ -150,7 +150,7 @@ const Header = () => {
       <a href="/">
         <Logo src={logoImg} alt="Logo" />
       </a>
-      <SocialMediaWrapper isMenuOpen={isMenuOpen}>
+      <SocialMediaWrapper $isMenuOpen={isMenuOpen}>
         <IconLink href="https://twitter.com/trvisXX" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faXTwitter} />
         </IconLink>
