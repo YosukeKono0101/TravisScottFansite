@@ -5,7 +5,8 @@ const StyledFooter = styled.footer`
   background-color: black;
   color: white;
   text-align: center;
-  padding: 20px 10px; // Adjust padding as needed
+  padding: 20px 10px;
+  border-top: 1px solid gray;
 `;
 
 const OfficialSiteLink = styled.a`
@@ -13,7 +14,7 @@ const OfficialSiteLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: #ccc;
+    color: gray;
   }
 `;
 
@@ -21,7 +22,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <p>
-        © 2023 Travis Scott Fan Site | Visit Travis's Official Site:{" "}
+        © 2024 Travis Scott Fan Site | Travis's Official Site:{" "}
         <OfficialSiteLink href="https://www.travisscott.com/" target="_blank" rel="noopener noreferrer">
           www.travisscott.com
         </OfficialSiteLink>
