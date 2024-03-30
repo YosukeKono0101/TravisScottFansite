@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Travis Scott Fan Site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Purpose
 
-## Available Scripts
+The Travis Scott Fan Site is a dedicated platform to celebrate the artistry of Jacques Berman Webster II, known professionally as Travis Scott. It aims to provide fans with a central hub for all things related to the artist, including his music, videos, albums, and more. The site features a modern, responsive design ensuring a seamless experience across all devices.
 
-In the project directory, you can run:
+## Contributing
 
-### `npm start`
+Contributions to the development of the Travis Scott Fan Site are welcome. Whether it's adding new features, fixing bugs, or improving documentation, your help is appreciated. To contribute:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Fork the repository.
+2. Create a new branch for your feature (`git checkout -b feature AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Home Page**: A landing page with a hero section showcasing Travis Scott.
+- **About Page**: Detailed information about Travis Scott's career and achievements.
+- **Resume Page**: An overview of Travis Scott's career highlights and skills.
+- **Portfolio Page**: A collection of videos and albums by Travis Scott.
+- **Video Detail Page**: Detailed information about specific videos.
+- **Album Detail Page**: Detailed information about specific albums.
+- **Chart Page**: Interactive charts displaying Travis Scott's top tracks and albums.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies
 
-### `npm run build`
+The application relies on several key dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React**
+- **React Router**
+- **Styled Components**
+- **Chart.js and react-chartjs-2**
+- **FontAwesome**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To install these dependencies, navigate to your project directory and run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install
+```
 
-### `npm run eject`
+## Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application is structured into components and pages, with `styled-components` for styling and `react-router-dom` for navigation. It uses a `flex` layout to ensure responsiveness across devices. The application's state is managed locally within components using React's `useState` and `useEffect` hooks.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Components**: Reusable UI elements like `Header`, `Footer`, and `LoadingSpinner`.
+- **Pages**: Individual pages like `Home`, `About`, `Resume`, and more, contained within the `/pages` directory.
+- **Services**: External API calls are abstracted into service functions located in the `/services` directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Reporting Issues
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you encounter any bugs or issues while using the Travis Scott Fan Site, please report them on the repository's issues page. Provide a detailed description of the issue, including steps to reproduce it, and screenshots if possible. Your feedback helps make the site better for everyone.
