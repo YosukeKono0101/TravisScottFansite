@@ -45,9 +45,9 @@ const ChartPage = () => {
     <>
       <GlobalStyle />
       <ChartContainer>
-        <Title>Top Tracks</Title>
+        <Title>Top Tracks Played</Title>
         <TopTracksChart tracks={topTracks} />
-        <Title>Top Albums</Title>
+        <Title>Top Albums Played</Title>
         <AlbumsChart albums={topAlbums} />
       </ChartContainer>
     </>
