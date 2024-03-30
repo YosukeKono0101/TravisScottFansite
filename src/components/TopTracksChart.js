@@ -24,7 +24,7 @@ const TopTracksChart = ({ tracks = [] }) => {
       legend: { position: "top" },
       title: { display: true, text: "Top Tracks Played" },
     },
-    // ホバー時の設定を追加
+
     hover: {
       mode: "index",
       intersect: false,
