@@ -15,7 +15,6 @@
     "chart.js": "^4.4.2",
     "crypto-browserify": "^3.12.0",
     "env": "^0.0.2",
-    "gh-pages": "^6.1.1",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -37,6 +36,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://YosukeKono0101.github.io/TravisScottFansite",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -54,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
