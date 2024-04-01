@@ -1,8 +1,7 @@
 {
   "files": {
     "main.css": "/TravisScottFansite/static/css/main.f0dce0a2.css",
-    "main.js": "/TravisScottFansite/static/js/main.ef1ea32f.js",
-    "static/js/453.851a2086.chunk.js": "/TravisScottFansite/static/js/453.851a2086.chunk.js",
+    "main.js": "/TravisScottFansite/static/js/main.df91634b.js",
     "static/media/hero_image2.jpeg": "/TravisScottFansite/static/media/hero_image2.6f1448d3a51674263e98.jpeg",
     "static/media/about_image.webp": "/TravisScottFansite/static/media/about_image.4427fc92691d31850c20.webp",
     "static/media/resume_image.webp": "/TravisScottFansite/static/media/resume_image.79641c024a81216ec558.webp",
@@ -10,11 +9,10 @@
     "static/media/top_track2.webp": "/TravisScottFansite/static/media/top_track2.54595d56e50de6e43c28.webp",
     "index.html": "/TravisScottFansite/index.html",
     "main.f0dce0a2.css.map": "/TravisScottFansite/static/css/main.f0dce0a2.css.map",
-    "main.ef1ea32f.js.map": "/TravisScottFansite/static/js/main.ef1ea32f.js.map",
-    "453.851a2086.chunk.js.map": "/TravisScottFansite/static/js/453.851a2086.chunk.js.map"
+    "main.df91634b.js.map": "/TravisScottFansite/static/js/main.df91634b.js.map"
   },
   "entrypoints": [
     "static/css/main.f0dce0a2.css",
-    "static/js/main.ef1ea32f.js"
+    "static/js/main.df91634b.js"
   ]
 }
