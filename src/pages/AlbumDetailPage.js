@@ -148,12 +148,22 @@ const TrackListTitle = styled.h2`
   color: #ccc;
 `;
 
+const ErrorMessage = styled.div`
+  color: #ff6b6b;
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+`;
+
 // Page component for the album detail page
 const AlbumDetail = () => {
   const { artistName, albumName } = useParams(); // Get the artist and album name from the URL
   const navigate = useNavigate(); // Get the navigate function from the router
   const [albumDetails, setAlbumDetails] = useState(null); // State for the album details
   const [loading, setLoading] = useState(true); // State for loading status
+  const [error, setError] = useState(""); // State for error status
 
   useEffect(() => {
     // Fetch the album details when the component mounts
@@ -166,6 +176,7 @@ const AlbumDetail = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching album details:", error);
+        setError("Failed to fetch album details. Please try again later.");
       }
     };
     fetchDetails();
@@ -183,6 +194,8 @@ const AlbumDetail = () => {
         </BackButton>
         {loading ? (
           <LoadingSpinner />
+        ) : error ? (
+          <ErrorMessage>{error}</ErrorMessage>
         ) : albumDetails ? (
           <>
             {" "}
