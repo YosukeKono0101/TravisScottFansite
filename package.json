@@ -37,7 +37,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://YosukeKono0101.github.io/TravisScottFansite",
   "eslintConfig": {
     "extends": [
       "react-app",
